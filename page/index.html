@@ -1,0 +1,29 @@
+<!-- Copyright 2018 caicloud authors. All rights reserved. -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>CD-Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="/css/all.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="/require.js"></script>
+  <script>
+    require.config({
+      "paths": {
+        "index": "index.js?v=hahah"
+      },
+      "baseUrl": "/"
+    })
+    require(["./index"]);
+  </script>
+</body>
+
+</html>

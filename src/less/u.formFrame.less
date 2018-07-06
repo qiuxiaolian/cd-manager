@@ -1,0 +1,266 @@
+// Copyright 2017 caicloud authors. All rights reserved.
+
+.u-formFrame {
+  min-width: 1000px;
+  position: relative;
+  background: #fff;
+  box-shadow: 0px 0px 2px 0px rgba(67, 101, 160, 0.12),
+    0px 2px 2px 0px rgba(118, 145, 193, 0.24);
+  padding: 20px 20px 0px;
+  .form-head-tabs {
+    width: calc(~"100% + 40px");
+    height: 52px;
+    margin: -20px 0 20px -20px;
+    background-color: #ebedf1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // 目前大多数浏览器的最新版本都已支持这个属性
+    // safari 6.1 及以上，firefox 32及以上， chrome 56及以上，opera 43及以上， ie暂不支持
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 162;
+    top: 50px;
+    left: 20px;
+    .form-head-tab {
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid transparent;
+      height: 100%;
+      cursor: pointer;
+      &:last-child {
+        border-right: 1px solid #dee1e7;
+      }
+      &.active {
+        border-bottom-color: #577abc;
+        background-color: #ced9ec;
+        color: #577abc;
+        letter-spacing: 0.35px;
+      }
+      &.disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    // 可编辑态样式(可增删 Tab)
+    &.editable {
+      height: 46px;
+      background-color: @color-white;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.06), 0 0px 5px 0 rgba(0, 0, 0, 0.12);
+      border-bottom: 1px solid @color-sp-divider;
+      .form-head-tab-add {
+        fill: @color-font-gray-1;
+      }
+      .form-head-tab {
+        position: relative;
+        min-width: 90px;
+        .form-head-tab-close {
+          display: none;
+          position: absolute;
+          right: 0;
+          margin: 0;
+          width: 18px;
+        }
+        &:last-child {
+          border-right: unset;
+        }
+        &.active {
+          background-color: unset;
+        }
+        &:hover {
+          .form-head-tab-close {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+  .form-content {
+    &.hide {
+      display: none;
+    }
+    .form-content-tip {
+      font-size: @font-size-tip;
+      color: @color-font-gray-2;
+      line-height: @font-size-tip;
+      margin: 0 20px 20px 24px;
+    }
+  }
+  .form-lump {
+    width: 100%;
+    &.no-title {
+      .lump-body {
+        padding-top: 0;
+      }
+    }
+    .lump-title {
+      width: 100%;
+      height: 26px;
+      padding: 0 20px;
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 0.3px;
+      background: #ebedf1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .lump-body {
+      min-height: 40px;
+      padding: 20px 0;
+      .item {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 20px 0;
+        color: #666;
+        .key {
+          position: relative;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          margin-right: 30px;
+          min-height: 32px;
+          letter-spacing: 0.34px;
+          .key-tip {
+            position: absolute;
+            right: -18px;
+            margin: 0px;
+            width: 12px !important;
+            height: 12px !important;
+          }
+        }
+        .value {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          flex-grow: 1;
+          min-height: 32px;
+          .tip {
+            font-size: 12px;
+            color: #999;
+            letter-spacing: 0.3px;
+            margin-top: 8px;
+          }
+        }
+        &:first-of-type {
+          margin-top: 0px;
+        }
+        &:last-of-type {
+          margin-bottom: 0px;
+        }
+        &.noMargin {
+          margin: 0;
+        }
+        &.noTopMargin {
+          margin-top: 0;
+        }
+        &.noBottomMargin {
+          margin-bottom: 0;
+        }
+        &.onlyText {
+          .value {
+            justify-content: center;
+          }
+        }
+        &.noKey {
+          .value {
+            margin-left: 125px;
+          }
+        }
+        // 用于 value 中存在多个 inline 元素时
+        &.inline {
+          > .value {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+        // 必填的字段
+        &.required {
+          & > .key {
+            &::before {
+              content: "*";
+              color: #ef5350;
+              margin-right: 4px;
+            }
+          }
+        }
+      }
+    }
+    .cai-select {
+      &.active {
+        .box {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  .form-btn {
+    padding: 20px;
+    display: flex;
+    margin: 0 -20px;
+    align-items: center;
+    justify-content: flex-start;
+    background: #fff;
+    border-top: 1px solid #dee1ef;
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0;
+    left: 20px;
+    // NOTE: should be lower than the side menu and higher than the content in form lump
+    z-index: 160;
+    .cai-button {
+      width: 150px;
+      margin: 0 10px 0 0;
+    }
+    .error-tip {
+      font-size: 12px;
+      color: #ef5350;
+      margin-left: 20px;
+    }
+  }
+  &.small {
+    .lump-body {
+      .item {
+        .key {
+          width: 60px;
+          min-width: 60px;
+        }
+      }
+    }
+  }
+  &.middle {
+    .lump-body {
+      .item {
+        .key {
+          width: 90px;
+          min-width: 90px;
+        }
+      }
+    }
+  }
+  &.lg {
+    .lump-body {
+      .item {
+        .key {
+          width: 120px;
+          min-width: 120px;
+        }
+      }
+    }
+  }
+  &.lgx2 {
+    .lump-body {
+      .item {
+        .key {
+          width: 150px;
+          min-width: 150px;
+        }
+      }
+    }
+  }
+}

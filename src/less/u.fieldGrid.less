@@ -1,0 +1,86 @@
+// 表格式 fieldArray
+.u-field-grid {
+  .field-grid-wrap {
+    width: 100%;
+  }
+
+  .row {
+    padding: 0px;
+    line-height: 24px;
+    color: @color-font-gray-1;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    letter-spacing: 0.29px;
+
+    .col {
+      width: 100px;
+
+      .cai-select {
+        width: 100%;
+      }
+
+      .cai-input {
+        width: 100%;
+        margin-right: 0px;
+        input::placeholder {
+          font-size: 12px;
+        }
+      }
+
+      &.col-ico {
+        width: 50px;
+        text-align: right;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .cai-ico {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .flex-wrap {
+      display: inline-flex;
+      width: calc(~"100% - 50px");
+
+      .col {
+        padding-right: 10px;
+
+        &:last-of-type {
+          padding-right: 0px;
+        }
+      }
+
+      &.block {
+        width: 100%;
+      }
+    }
+  }
+
+  .row-title {
+    background-color: @color-gray-5;
+  }
+
+  .row-head {
+    padding-bottom: 4px;
+    color: 1px solid lighten(@color-black, 47%);
+    border-bottom: 1px solid lighten(@color-black, 89%);
+  }
+
+  .row-body {
+    padding-top: 10px;
+  }
+}
+
+// 添加项目按钮
+.u-field-grid-add {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin: 10px 0px;
+  height: 20px;
+  color: @color-base;
+}
